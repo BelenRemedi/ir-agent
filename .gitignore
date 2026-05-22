@@ -1,0 +1,5 @@
+venv/
+.env
+.ir_agent_memory.json
+.ir_agent_docs.json
+.ir_agent_summary.json
