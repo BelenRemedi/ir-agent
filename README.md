@@ -2,6 +2,8 @@
 
 An AI agent extended with Information Retrieval capabilities, built for the Information Retrieval course — Assignment 2.
 
+**Demo Video:** https://www.loom.com/share/cfcabd4246dd455b8be805dd956948be
+
 ## Overview
 
 IR Agent wraps a large language model in an agentic loop and gives it tools for finding, storing, and retrieving context. The core hypothesis is that **an LLM with good IR tools is far more useful than one without**: it can remember things, search documents efficiently, and fetch live information from the web.
