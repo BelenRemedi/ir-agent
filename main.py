@@ -84,12 +84,38 @@ def run_demo(agent):
             ),
         ),
         (
+            "document_index_2",
+            (
+                "Please index this text: "
+                "'Automobiles use internal combustion engines to convert fuel into "
+                "mechanical motion. The pistons compress a fuel-air mixture which "
+                "ignites and drives the crankshaft, propelling the vehicle forward.' "
+                "with title 'Vehicle Mechanics'"
+            ),
+        ),
+        (
             "document_search",
             "Search my documents for information about term frequency normalization",
         ),
         (
+            "query_expansion_demo",
+            (
+                "Search my documents for: how do cars work? "
+                "Note: the document uses the word 'automobiles' not 'cars' — "
+                "this tests whether query expansion finds it anyway."
+            ),
+        ),
+        (
             "memory",
             "Remember that I am studying Information Retrieval at university, assignment 2",
+        ),
+        (
+            "memory_search",
+            "What do you know about my studies?",
+        ),
+        (
+            "skills",
+            "List your available skills",
         ),
         (
             "calculation",

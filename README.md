@@ -30,10 +30,27 @@ IR Agent wraps a large language model in an agentic loop and gives it tools for 
 | Feature | Description | IR Concept |
 |---------|-------------|------------|
 | **BM25 Document Search** | Indexes documents in chunks, ranks by BM25 score | Classical probabilistic IR |
+| **Query Expansion** | Rewrites queries into alternative phrasings before searching, tackling vocabulary mismatch | Query reformulation |
 | **Working Memory** | Persistent key-value store with keyword search | Information management |
 | **Web Search** | DuckDuckGo fallback, Brave Search with API key | Web IR |
 | **Conversation Compaction** | Summarizes old messages to preserve context | Context window management |
 | **Skill Files** | Markdown files with task instructions the agent reads on-demand | Knowledge retrieval |
+
+### Query Expansion
+
+Before searching documents or memory, the agent expands the query into alternative phrasings using the LLM. This tackles the **vocabulary mismatch problem** — the words a user uses in their query often don't match the words in relevant documents.
+
+```
+User query:   "how do cars work?"
+Expanded:     ["how do cars work?", "automobile engine operation", 
+               "vehicle mechanics explained", "motor car internal workings"]
+```
+
+All variants are searched, results are merged, deduplicated, and re-ranked by BM25 score. The original query is always preserved.
+
+**Example:** A document says "automobiles use internal combustion engines". Without expansion, a search for "cars" finds nothing. With expansion, the LLM generates "automobile engine" as an alternative and the document is found.
+
+This is implemented in `tools/query_expansion.py` and is automatically applied inside `document_search` and `memory_search`.
 
 ### BM25 Implementation
 
